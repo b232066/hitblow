@@ -19,10 +19,19 @@ def play(digits=3):
     digits = select_digits(default=digits)
     secret = make_secret(digits)
     print(f"{digits} 桁で挑戦！")
+    print("ゲーム中に r を入力すると最初からやり直します。")
 
     tries = 0
     while True:
         guess = input("予想 > ").strip()
+        
+        # -------------------------------
+        # リスタート
+        # -------------------------------
+        if guess == "r":
+            print("\nゲームを最初からやり直します。\n")
+            return False
+
 
         # ===== ② 入力コマンドに足す（ヒント など）: ここに書く（import もここに） =====
         # 例:  from .hint import hint
