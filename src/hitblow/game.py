@@ -14,6 +14,11 @@ def play(digits=3):
     print(f"Hit & Blow（{digits} 桁・重複なし）")
 
     # ===== ① 開始時に足す（難易度・あいさつ など）: ここに書く =====
+        # ===== ① 開始時に足す（難易度・あいさつ など）: ここに書く =====
+    from .difficulty import select_digits
+    digits = select_digits(default=digits)
+    secret = make_secret(digits)
+    print(f"{digits} 桁で挑戦！")
 
     tries = 0
     while True:
