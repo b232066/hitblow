@@ -25,18 +25,27 @@ def play(digits=3):
 
     print(f"{digits} 桁で挑戦！")
     print("ゲーム中に r を入力すると最初からやり直します。")
+    print("ゲーム中に q を入力するとリタイアします。")
 
     tries = 0
 
     while True:
-        guess = input("予想 > ").strip()
+        guess = input("予想 > ").strip().lower()
         
         # -------------------------------
         # リスタート
         # -------------------------------
         if guess == "r":
             print("\nゲームを最初からやり直します。\n")
-            return False
+            return "restart"
+
+        # -------------------------------
+        # リタイア
+        # -------------------------------
+        if guess == "q":
+            print("\nリタイアしました。")
+            print(f"答えは {secret} でした。")
+            return "quit"
 
 
         # ===== ② 入力コマンドに足す（ヒント など）: ここに書く（import もここに） =====
@@ -60,4 +69,4 @@ def play(digits=3):
             # ===== ③ 勝利時に足す（スコア・履歴 など）: ここに書く =====
 
             print(f"正解！ {tries} 回で当たり（答え {secret}）")
-            break
+            return "clear"

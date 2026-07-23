@@ -1,5 +1,7 @@
 """コマンドの入口。第3回で `hitblow` コマンドがここ（main）を呼ぶ。"""
 
+from unittest import result
+
 from .game import play
 
 
@@ -16,25 +18,33 @@ def main():
         result = play()
 
         # -------------------------------
-        # play()からFalseが返れば
+        # play()からrestartが返れば
         # ゲーム途中でrが押された
         # -------------------------------
-        if result is False:
-
+        if result == "restart":
             print("新しいゲームを開始します。\n")
-
             continue
 
         # -------------------------------
-        # 正常終了
+        # ゲームをクリア、またはリタイアした
         # -------------------------------
-        restart = input(
+        if result == "clear":
+            print("ゲームクリア！")
+
+        if result == "quit":
+            print("ゲームをリタイアしました。")
+
+        # -------------------------------
+        # もう一度遊ぶか確認
+        # -------------------------------    
+        again = input(
             "\nrで新しいゲーム\n"
             "Enterで終了\n> "
         ).strip().lower()
 
-        if restart != "r":
+        if again == "r":
+            continue
 
-            print("ゲームを終了します。")
+        print("ゲームを終了します。")
+        break
 
-            break

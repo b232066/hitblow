@@ -35,6 +35,7 @@ tests/test_core.py
 
 - 難易度選択機能（3〜6桁から選べる）: `difficulty.py`
 - cli.py:リスタート機能（r.Rを入力してEnterを押すと開始地点に戻る）
+- cli.py:リタイア機能（q.Qを入力してEnterを押すとそのゲームを終了する。）
 
 ## 進め方
 - 仕様を書く → **AI に実装させる**（コースサイトの「AI の使い方」参照）→ 遊んで確認＋`uv run pytest`。
