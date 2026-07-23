@@ -14,14 +14,20 @@ def play(digits=3):
     print(f"Hit & Blow（{digits} 桁・重複なし）")
 
     # ===== ① 開始時に足す（難易度・あいさつ など）: ここに書く =====
-        # ===== ① 開始時に足す（難易度・あいさつ など）: ここに書く =====
     from .difficulty import select_digits
     digits = select_digits(default=digits)
     secret = make_secret(digits)
+
+    from .duplicate import ask_allow_duplicates, make_secret_with_duplicates
+    if ask_allow_duplicates():
+        secret = make_secret_with_duplicates(digits)
+        print("重複ありモードで開始！")
+
     print(f"{digits} 桁で挑戦！")
     print("ゲーム中に r を入力すると最初からやり直します。")
 
     tries = 0
+
     while True:
         guess = input("予想 > ").strip()
         
